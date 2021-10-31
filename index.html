@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Let's see how this goes for halloween</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            color: #fff;
+            background-color: #485461;
+            background-image: linear-gradient(0deg, #485461 0%, #28313b 100%);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            text-align: center;
+            padding: 25px auto;
+            margin: 80px auto;
+            font-weight: 600;
+            letter-spacing: 5px;
+            overflow: hidden;
+        }
+        button {
+            margin: 25px auto;
+            padding: 10px 20px;
+            color: #fff;
+            background-color: #28313b;
+            outline: none;
+            border: 2px solid #28313b;
+            border-radius: 5px;
+            font-weight: 800;
+            cursor: pointer;
+        }
+        button:hover { border: 2px solid orange; }
+        img { display: none; }
+
+        @media screen and (max-width: 400px) {
+            img { width: 200px; }
+        }
+    </style>
+</head>
+<body>
+    <h1 class="head">Don't turn off the lights 💡</h1>
+    <button class="btn">💡LIGHTS ON</button>
+    <img src="./images/spooky.png" class="penny" alt="pennywise">
+    <audio src="./images/audio_scream.mp3" class="spooky-audio"></audio>
+    <audio src="./images/audio_laugh.mp3" class="laugh"></audio>
+</body>
+
+<script>
+    const tag = query => document.querySelector(query);
+
+    const btn = tag(".btn");
+    const head = tag(".head");
+    const penny = tag(".penny");
+    const audio = tag(".spooky-audio");
+    const laugh = tag(".laugh");
+
+    btn.addEventListener("click", e => {
+        if (btn.innerHTML == "💡LIGHTS ON") { btn.innerHTML = "🎈LIGHTS OFF"; }
+        else { btn.innerHTML = "💡LIGHTS ON" }
+
+        if (penny.style.display == "block") { penny.style.display = "none"; }
+        else { penny.style.display = "block"; }
+
+        if (head.innerHTML == "Don't turn off the lights 💡") { head.innerHTML = "You shouldn't have done that! 🎃"; }
+        else { head.innerHTML = "Don't turn off the lights 💡"; }
+
+        laugh.volume = 1;
+        audio.volume = 1;
+
+        if (btn.innerHTML == "🎈LIGHTS OFF") {
+            laugh.play(); audio.play();
+        }
+        else {
+            laugh.pause(); audio.pause();
+        }
+    })
+</script>
+
+</html>
